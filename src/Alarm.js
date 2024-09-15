@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Alarm (){
 
     const [time, setTime] = useState(new Date().getTime());
     const [alarmTime, setAlarmTime] = useState();
 
-    const checkTime = (){
+    const checkAlarm = () => {
+        const currentTime = String(time).slice(0,5);
+        console.log(currentTime);
         if(time===alarmTime){
             return(
                 <div>
@@ -16,8 +18,24 @@ export default function Alarm (){
         }
     }
 
-    return(
-        <h2>Set up Alarm</h2>
+    useEffect(()=>{
+        const timerId = setInterval(()=>{
+            setTime(new Date().getTime());
+        },1000)
 
+        return () => clearInterval(timerId);
+    },[])
+
+
+    
+
+    return(
+        <div>
+            <h2>Set up Alarm</h2>
+            <input type="time" value={alarmTime} onChange={(e)=> {setAlarmTime(e.target.value); checkAlarm()}}/>
+            {checkAlarm}
+            <button >Save Alarm</button>
+            {console.log(alarmTime, time)}
+        </div> 
     )
 }
