@@ -2,3 +2,23 @@
   font-family: sans-serif;
   text-align: center;
 }
+.alarmbox{
+  background-color: rgb(46, 193, 193);
+  border: 3px solid goldenrod;
+  border-radius: 1.5rem;
+}
+.alarmbox input{
+  border-radius: 10px;
+  padding: 0.3rem;
+}
+button {
+  padding: 0.3rem;
+  border : 3px solid rgb(4, 4, 93);
+  border-radius: 10px;
+  background-color: goldenrod;
+}
+button:hover {
+  border : 3px solid goldenrod;
+  background-color: rgb(4, 4, 93);
+  color: white;
+}
