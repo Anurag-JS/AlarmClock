@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 
 export default function Alarm (){
 
-    const [time, setTime] = useState(new Date());
+    //const [time, setTime] = useState(new Date());
     const [alarmTime, setAlarmTime] = useState("");
     const [alarmActive, setAlarmActive] = useState(false);
+    const [alarmSaved, setAlarmSaved] = useState(false)
 
     const handleInputChange= (e)=>{
         setAlarmTime(e.target.value)
@@ -17,18 +18,19 @@ export default function Alarm (){
     
     useEffect(()=>{
         const timerId = setInterval(()=>{
-            setTime(new Date());
-            const currentTime = time.toTimeString().slice(0,5);
+            const currentTime = new Date().toTimeString().slice(0,5);
+           // setTime(new Date());
             if(currentTime===alarmTime){
                 console.log(currentTime,alarmTime+"reached")
                 setAlarmActive(true);
             }
         },1000)
         return () => clearInterval(timerId);
-    },[])
+    },[alarmTime])
 
     const saveAlarm = () => {
         setAlarmTime(alarmTime);
+        setAlarmSaved(true);
     }
 
 
@@ -41,11 +43,12 @@ export default function Alarm (){
                 <h2>Set up Alarm</h2>
                 <input type="time" value={alarmTime} onChange={handleInputChange} /> 
                 <button onClick={saveAlarm}><strong>Save Alarm</strong></button>  
+                {alarmSaved && <h3>Alarm Saved for {alarmTime}</h3>}
                 </div> 
             )
             :
             (
-                <div>
+                <div className="alarmOnBox">
                     <h1>Hey, Your Alarm is On</h1>
                     <button onClick={resetAlarm}>Close Alarm</button>
                 </div>
