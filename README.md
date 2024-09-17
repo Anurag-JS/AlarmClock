@@ -29,3 +29,16 @@ The project uses functional components with React Hooks (`useState`, `useEffect`
 2. **Save Alarm**: After setting the time, the user clicks the "Save Alarm" button. A message will then appear below the button displaying "Alarm Saved for [time]".
 3. **Alarm Check**: The app continuously checks the current time using `setInterval` every second. When the current time matches the saved alarm time, the app triggers the alarm and displays a notification.
 4. **Reset Alarm**: Once the alarm is active, users can click the "Close Alarm" button to reset the alarm state.
+
+## Installation and Run
+To run this project locally, follow these steps:
+
+Clone the Repository Download the project files to your local machine using Git or directly from the source.
+
+Navigate to the Project Directory Open a terminal and use the cd command to navigate to the root directory of the project.
+
+Install Dependencies Run npm install in the terminal to automatically install all required packages and dependencies.
+
+Launch the Application Once the installation is complete, start the development server with the command npm start.
+
+View in Browser Open your web browser and go to http://localhost:3000/ to interact with the application.
